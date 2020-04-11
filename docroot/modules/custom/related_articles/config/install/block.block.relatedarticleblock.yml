@@ -1,0 +1,28 @@
+uuid: fd1c5ac2-156d-4e25-a1d3-d256d7090f33
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - related_articles
+  theme:
+    - bartik
+id: relatedarticleblock
+theme: bartik
+region: content
+weight: 0
+provider: null
+plugin: related_article_block
+settings:
+  id: related_article_block
+  label: 'Related Article Block'
+  provider: related_articles
+  label_display: visible
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      article: article
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

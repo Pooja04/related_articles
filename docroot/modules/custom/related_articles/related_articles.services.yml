@@ -1,0 +1,3 @@
+services:
+ related_articles.get_articles:
+   class: Drupal\related_articles\Services\ArticlesServices

@@ -1,0 +1,52 @@
+<?php
+
+use Drupal\taxonomy\Entity\Term;
+use Drupal\node\Entity\Node;
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_modules_installed().
+ */
+function related_articles_modules_installed($modules) {
+
+  $tagsArray = [];
+  $userArray = [];
+
+  for ($i = 1; $i <= 5; $i++) {
+    // User create
+    $Newuser = User::create([
+        'name' => 'user_' . $i,
+        'mail' => "user_$i@example.com",
+        'status' => 1,
+    ]);
+    $Newuser->save();
+    $userArray[] = $Newuser->id();
+  }
+
+  for ($i = 1; $i <= 5; $i++) {
+
+
+    $term = Term::create([
+        'name' => 'category_' . $i,
+        'vid' => 'tags',
+    ]);
+
+    $term->save();
+    $tagsArray[] = $term->id();
+  }
+
+  for ($i = 1; $i <= 10; $i++) {
+
+    // Node create
+    $options = [
+      'type' => 'article',
+      'title' => 'Article ' . $i,
+      'body' => 'This is the detail description for Article ' . $i,
+      'field_tags' => $tagsArray[array_rand($tagsArray)],
+      'uid' => $userArray[array_rand($userArray)]
+    ];
+
+    $node = Node::create($options);
+    $node->save();
+  }
+}
