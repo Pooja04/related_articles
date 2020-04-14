@@ -1,1 +1,34 @@
 <?php
+
+use Drupal\Core\Cache\Cache;
+use Drupal\node\Entity\Node;
+
+/*
+ * Invalidate the custom tag if entities of type "article" get updated.
+ */
+
+function related_articles_node_update(Node $entity) {
+  if ($entity->getType() == 'article') {
+    Cache::invalidateTags(['node_list:article']);
+  }
+}
+
+/*
+ * Invalidate the custom tag if entities of type "article" get inserted.
+ */
+
+function related_articles_node_insert(Node $entity) {
+  if ($entity->getType() == 'article') {
+    Cache::invalidateTags(['node_list:article']);
+  }
+}
+
+/*
+ * Invalidate the custom tag if entities of type "article" get deleted.
+ */
+
+function related_articles_node_delete(Node $entity) {
+  if ($entity->getType() == 'article') {
+    Cache::invalidateTags(['node_list:article']);
+  }
+}

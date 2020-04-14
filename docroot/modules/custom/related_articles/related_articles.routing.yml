@@ -1,0 +1,7 @@
+related_articles.admin_settings:
+  path: '/admin/config/development/related_articles'
+  defaults:
+    _form: '\Drupal\related_articles\Form\SettingsForm'
+    _title: 'Related Articles settings'
+  requirements:
+    _permission: 'administer site configuration'

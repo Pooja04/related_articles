@@ -1,3 +1,4 @@
 services:
  related_articles.get_articles:
    class: Drupal\related_articles\Services\ArticlesServices
+   arguments: ['@entity_type.manager', '@config.factory']

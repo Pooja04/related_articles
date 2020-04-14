@@ -5,9 +5,9 @@ use Drupal\node\Entity\Node;
 use Drupal\user\Entity\User;
 
 /**
- * Implements hook_modules_installed().
+ * Implements hook_install().
  */
-function related_articles_modules_installed($modules) {
+function related_articles_install() {
 
   $tagsArray = [];
   $userArray = [];
